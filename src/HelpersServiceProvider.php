@@ -10,13 +10,13 @@ class HelpersServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $helpersPath = __DIR__ . '/../Helpers/features';
+        $helpersPath = __DIR__ . DIRECTORY_SEPARATOR . 'features';
         foreach (scandir($helpersPath) as $helperFile) {
             $path = sprintf(
                 '%s%s%s%s%s',
                 __DIR__,
                 DIRECTORY_SEPARATOR,
-                '../Helpers/features',
+                'features',
                 DIRECTORY_SEPARATOR,
                 $helperFile
             );
