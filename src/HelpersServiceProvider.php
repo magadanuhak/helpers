@@ -1,6 +1,6 @@
 <?php
 
-namespace Merax;
+namespace Merax\Helpers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;

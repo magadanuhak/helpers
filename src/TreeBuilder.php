@@ -1,6 +1,6 @@
 <?php
 
-namespace Merax;
+namespace Merax\Helpers;
 
 class TreeBuilder
 {
