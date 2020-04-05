@@ -3,17 +3,23 @@
   "description": "Helpers for laravel 7",
   "type": "library",
   "license": "MIT",
-  "minimum-stability": "stable",
   "require": {
     "php": ">=7.4",
     "laravel/framework": ">=7.0"
   },
   "autoload": {
     "psr-4": {
-      "Merax\\Helpers\\": "src/"
+      "Merax\\Helpers\\": "src"
     }
   },
   "config": {
     "sort-packages": true
+  },
+  "extra": {
+    "laravel" : {
+      "providers" : [
+        "Merax\\HelpersServiceProvider"
+      ]
+    }
   }
 }
