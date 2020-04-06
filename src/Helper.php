@@ -2,6 +2,10 @@
 
 namespace Merax\Helpers;
 
+use NotFoundModuleException;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Database\Eloquent\Model;
+
 class Helper
 {
     /**
