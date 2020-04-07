@@ -12,12 +12,14 @@ class Helper
     /**
      * Получение названия модуля
      *
+     * @param string|null $routeName
      * @return string
      * @throws NotFoundModuleException
      */
-    public static function getModuleName(): string
+    public static function getModuleName(string $routeName = null): string
     {
-        [$version, $module] = explode('.', Route::currentRouteName());
+
+        [$version, $module] = explode('.', $routeName ?? Route::currentRouteName());
         if (!$module) {
             throw new NotFoundModuleException('Module not found', 404);
         }
@@ -28,12 +30,13 @@ class Helper
     /**
      * Получение названия модели
      *
+     * @param string|null $routeName
      * @return string
      * @throws NotFoundModuleException
      */
-    public static function getModelName(): string
+    public static function getModelName(string $routeName = null): string
     {
-        return Str::ucfirst(Str::camel(Str::singular(self::getModuleName())));
+        return Str::ucfirst(Str::camel(Str::singular(self::getModuleName($routeName))));
     }
 
 
