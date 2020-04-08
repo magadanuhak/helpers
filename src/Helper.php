@@ -39,6 +39,18 @@ class Helper
         return Str::ucfirst(Str::camel(Str::singular(self::getModuleName($routeName))));
     }
 
+     /**
+     * Получение названия контроллера
+     *
+     * @param string|null $routeName
+     * @return string
+     */
+    public static function getControllerName(string $routeName = null): string
+    {
+        return Str::before(Route::getRoutes()-> getByName($routeName)->action['controller'], '@');
+    }
+
+
 
     /**
      * Локализация
