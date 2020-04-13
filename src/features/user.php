@@ -11,9 +11,9 @@ function user()
     return app('auth')->user();
 }
 
-function timezone()
+function userTimezone()
 {
-    if (Auth::check()) {
+    if (app('auth')->check()) {
         return user()->timezone;
     }
 
