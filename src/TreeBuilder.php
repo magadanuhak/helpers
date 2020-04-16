@@ -29,6 +29,9 @@ class TreeBuilder
         string $keyField = 'id',
         string $orderBy = 'id'
     ): array {
+        if (empty($flat)) {
+            return $flat;
+        }
         self::$parentField = $parentField;
         self::$childrenField = $childrenField;
         self::$keyField = $keyField;
