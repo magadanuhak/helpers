@@ -14,16 +14,11 @@ class Helper
      *
      * @param string|null $routeName
      * @return string
-     * @throws NotFoundModuleException
      */
     public static function getModuleName(string $routeName = null): string
     {
 
         [$version, $module] = explode('.', $routeName ?? Route::currentRouteName());
-        if (!$module) {
-            throw new NotFoundModuleException('Module not found', 404);
-        }
-
         return (string)$module;
     }
 
@@ -32,7 +27,6 @@ class Helper
      *
      * @param string|null $routeName
      * @return string
-     * @throws NotFoundModuleException
      */
     public static function getModelName(string $routeName = null): string
     {
@@ -59,7 +53,6 @@ class Helper
      * @param string $field = 'title' ?: 'description'
      *
      * @return string
-     * @throws NotFoundModuleException
      */
     public static function trans(string $name, string $field = 'title'): string
     {
@@ -82,7 +75,7 @@ class Helper
         $formCreatedAt = (int)request()->header('X-Created-At');
         $rowUpdatedAt = \carbon($model->getAttribute('updated_at'))->timestamp;
         if ($formCreatedAt && ($rowUpdatedAt > $formCreatedAt)) {
-            throw new ConcurrentRequestException('Concurrent request error', 9999);
+            throw new ConcurrentRequestException('Concurrent request error', 502);
         }
     }
 }
