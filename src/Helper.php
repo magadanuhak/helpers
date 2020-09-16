@@ -73,7 +73,7 @@ class Helper
     public static function checkConcurrentRequests(Model $model): void
     {
         $formCreatedAt = (int)request()->header('X-Created-At');
-        $rowUpdatedAt = \carbon($model->getAttribute('updated_at'))->timestamp;
+        $rowUpdatedAt = \carbon($model->getRawOriginal('updated_at'))->timestamp;
         if ($formCreatedAt && ($rowUpdatedAt > $formCreatedAt)) {
             throw new ConcurrentRequestException('Concurrent request error', 502);
         }
